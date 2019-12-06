@@ -30,6 +30,7 @@ namespace Parent_Portal.Pages
                                               ,[P_Name]
                                               ,[P_Email]
                                               ,[P_Password]
+                                              ,[S_Id]
                                               ,[S_Name]
                                               ,[S_Sem_No]
                                           FROM [dbo].[ParentTable]";
@@ -43,7 +44,7 @@ namespace Parent_Portal.Pages
 
             string AdvisorStudent = @"SELECT [Id]
                                       ,[A_Id]
-                                      ,[P_Id]
+                                      ,[S_Id]
                                   FROM [dbo].[AdvisorStudent]";
 
             ParentStudentGridView.DataSource = db.getData(ParentStudentQuery);
@@ -113,8 +114,6 @@ namespace Parent_Portal.Pages
                 AdvisorSuccessMessage.Text = "";
                 AdvisorErrorMessage.Text = ex.Message;
             }
-
-
         }
 
         protected void AdvisorGridView_RowEditing(object sender, GridViewEditEventArgs e)
@@ -134,6 +133,7 @@ namespace Parent_Portal.Pages
         {
             try
             {
+                // Update Conflic with AdvisorStudent Table
                 using (SqlConnection sqlCon = new SqlConnection(connectionString))
                 {
                     sqlCon.Open();
@@ -147,6 +147,14 @@ namespace Parent_Portal.Pages
                     sqlCmd.Parameters.AddWithValue("@id", Convert.ToString(AdvisorGridView.DataKeys[e.RowIndex].Value));
                     sqlCmd.ExecuteNonQuery();
                     AdvisorGridView.EditIndex = -1;
+
+                    
+                   // string asQuery = @"UPDATE [dbo].[AdvisorStudent] SET [A_Id]=@A_Id WHERE [Id]=@id";
+                  //  SqlCommand asSqlCmd = new SqlCommand(asQuery, sqlCon);
+                   // asSqlCmd.Parameters.AddWithValue("@A_Id", (AdvisorGridView.Rows[e.RowIndex].FindControl("A_IdTextBox2") as TextBox).Text.Trim());
+                   // asSqlCmd.ExecuteNonQuery();
+                   // AdvisorStudentGridView.EditIndex = -1;
+
                     loadGrid();
                     AdvisorSuccessMessage.Text = "Selected Record Updated";
                     AdvisorErrorMessage.Text = "";
@@ -188,6 +196,97 @@ namespace Parent_Portal.Pages
                 AdvisorErrorMessage.Text = ex.Message;
             }
 
+        }
+
+        protected void AdvisorStudentGridView_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            try
+            {
+                if (e.CommandName.Equals("AddNew"))
+                {
+                    using (SqlConnection sqlCon = new SqlConnection(connectionString))
+                    {
+                        sqlCon.Open();
+                        string advisorQuery = @"INSERT INTO [dbo].[AdvisorStudent] ([A_Id],[S_Id]) VALUES (@A_Id,@S_Id)";
+                        SqlCommand sqlCmd = new SqlCommand(advisorQuery, sqlCon);
+                        sqlCmd.Parameters.AddWithValue("@A_Id", (AdvisorStudentGridView.FooterRow.FindControl("txtAS_IdFooter") as TextBox).Text.Trim());
+                        sqlCmd.Parameters.AddWithValue("@S_Id", (AdvisorStudentGridView.FooterRow.FindControl("txtS_IdFooter") as TextBox).Text.Trim());
+                        sqlCmd.ExecuteNonQuery();
+
+                        loadGrid();
+                        asSuccessMessage.Text = "New Record Added";
+                        asErrorMessage.Text = "";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                asSuccessMessage.Text = "";
+                asErrorMessage.Text = ex.Message;
+            }
+        }
+
+        protected void AdvisorStudentGridView_RowEditing(object sender, GridViewEditEventArgs e)
+        {
+            AdvisorStudentGridView.EditIndex = e.NewEditIndex;
+            loadGrid();
+        }
+
+        protected void AdvisorStudentGridView_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
+        {
+            AdvisorStudentGridView.EditIndex = -1;
+            loadGrid();
+        }
+
+        protected void AdvisorStudentGridView_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            try
+            {
+                    using (SqlConnection sqlCon = new SqlConnection(connectionString))
+                    {
+                        sqlCon.Open();
+                        string query = "DELETE FROM [dbo].[AdvisorStudent] WHERE [Id]=@id";
+                        SqlCommand sqlCmd = new SqlCommand(query, sqlCon);
+                        sqlCmd.Parameters.AddWithValue("@id", Convert.ToString(AdvisorStudentGridView.DataKeys[e.RowIndex].Value));
+                        sqlCmd.ExecuteNonQuery();
+                        loadGrid();
+                        asSuccessMessage.Text = "Selected Record Deleted";
+                        asErrorMessage.Text = "";
+                    }
+                
+            }
+            catch (Exception ex)
+            {
+                asSuccessMessage.Text = "";
+                asErrorMessage.Text = ex.Message;
+            }
+        }
+
+        protected void AdvisorStudentGridView_RowUpdating(object sender, GridViewUpdateEventArgs e)
+        {
+            try
+            {
+                using (SqlConnection sqlCon = new SqlConnection(connectionString))
+                {
+                    sqlCon.Open();
+                    string query = @"UPDATE [dbo].[AdvisorStudent]
+                    SET [A_Id] =@A_Id ,[S_Id] =@S_Id WHERE [Id]=@id";
+                    SqlCommand sqlCmd = new SqlCommand(query, sqlCon);
+                    sqlCmd.Parameters.AddWithValue("@A_Id", (AdvisorStudentGridView.Rows[e.RowIndex].FindControl("A_IdTextBox") as TextBox).Text.Trim());
+                    sqlCmd.Parameters.AddWithValue("@S_Id", (AdvisorStudentGridView.Rows[e.RowIndex].FindControl("S_IdTextBox") as TextBox).Text.Trim());
+                    sqlCmd.Parameters.AddWithValue("@id", Convert.ToString(AdvisorStudentGridView.DataKeys[e.RowIndex].Value));
+                    sqlCmd.ExecuteNonQuery();
+                    AdvisorStudentGridView.EditIndex = -1;
+                    loadGrid();
+                    asSuccessMessage.Text = "Selected Record Updated";
+                    asErrorMessage.Text = "";
+                }
+            }
+            catch (Exception ex)
+            {
+                asSuccessMessage.Text = "";
+                asErrorMessage.Text = ex.Message;
+            }
         }
     }
 }

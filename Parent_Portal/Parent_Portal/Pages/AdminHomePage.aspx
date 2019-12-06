@@ -7,6 +7,7 @@
 <body>
     <form id="form1" runat="server">
         <div class="main">
+
        <div class="Parent_Grid">
            <asp:Label ID="parentInfo" runat="server" Text="Parent & Student Table:"></asp:Label>
     <asp:GridView ID="ParentStudentGridView" runat="server" AutoGenerateColumns="False" OnRowDeleting="ParentStudentGridView_RowDeleting"
@@ -36,6 +37,16 @@
                     <asp:Label ID="Label3" runat="server" Text='<%# Bind("P_Email") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
+            
+            <asp:TemplateField HeaderText="Student Id">
+                <EditItemTemplate>
+                    <asp:TextBox ID="S_IdTextBox4" runat="server" Text='<%# Bind("S_Id") %>'></asp:TextBox>
+                </EditItemTemplate>
+                <ItemTemplate>
+                    <asp:Label ID="Label4" runat="server" Text='<%# Bind("S_Id") %>'></asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
+
             <asp:TemplateField HeaderText="Student Name">
                 <EditItemTemplate>
                     <asp:TextBox ID="S_NameTextBox4" runat="server" Text='<%# Bind("S_Name") %>'></asp:TextBox>
@@ -146,25 +157,27 @@
     </asp:GridView>
 
                  <br />
-
+            
    <asp:Label ID="AdvisorSuccessMessage" Text="" runat="server" ForeColor="Green"></asp:Label>
             <br />
    <asp:Label ID="AdvisorErrorMessage" Text="" runat="server" ForeColor="Red"></asp:Label>
        </div>
+            
 
-            </div>
+            
 
             <br />
             <br />
 
             <div class="AdvisorStudentGrid">
                 <asp:Label ID="Label7" runat="server" Text="Assign Student Under a Teacher:"></asp:Label>
-                <asp:GridView ID="AdvisorStudentGridView" runat="server" AutoGenerateColumns="False" ShowFooter="true" DataKeyNames="Id">
+                <asp:GridView ID="AdvisorStudentGridView" runat="server" AutoGenerateColumns="False" ShowFooter="true" DataKeyNames="Id"
+                    OnRowCommand="AdvisorStudentGridView_RowCommand" OnRowEditing="AdvisorStudentGridView_RowEditing"
+                     OnRowCancelingEdit="AdvisorStudentGridView_RowCancelingEdit" OnRowDeleting="AdvisorStudentGridView_RowDeleting"
+                     OnRowUpdating="AdvisorStudentGridView_RowUpdating">
                     <Columns>
                         <asp:TemplateField HeaderText="Id">
-                            <EditItemTemplate>
-                                <asp:TextBox ID="IdTextBox" runat="server" Text='<%# Eval("Id") %>'></asp:TextBox>
-                            </EditItemTemplate>
+                            
                             <ItemTemplate>
                                 <asp:Label ID="Label1" runat="server" Text='<%# Eval("Id") %>'></asp:Label>
                             </ItemTemplate>
@@ -187,15 +200,15 @@
                             </FooterTemplate>
                         </asp:TemplateField>
 
-                        <asp:TemplateField HeaderText="P_Id">
+                        <asp:TemplateField HeaderText="Student Id">
                             <EditItemTemplate>
-                                <asp:TextBox ID="P_IdTextBox" runat="server" Text='<%# Eval("P_Id") %>'></asp:TextBox>
+                                <asp:TextBox ID="S_IdTextBox" runat="server" Text='<%# Eval("S_Id") %>'></asp:TextBox>
                             </EditItemTemplate>
                             <ItemTemplate>
-                                <asp:Label ID="Label3" runat="server" Text='<%# Eval("P_Id") %>'></asp:Label>
+                                <asp:Label ID="Label3" runat="server" Text='<%# Eval("S_Id") %>'></asp:Label>
                             </ItemTemplate>
                             <FooterTemplate>
-                                <asp:TextBox ID="txtP_IdFooter" runat="server" />
+                                <asp:TextBox ID="txtS_IdFooter" runat="server" />
                             </FooterTemplate>
                         </asp:TemplateField>
 
@@ -215,11 +228,14 @@
 
                     </Columns>
                 </asp:GridView>
-            </div>
-
-
+                <br />
+            
+               <asp:Label ID="asSuccessMessage" Text="" runat="server" ForeColor="Green"></asp:Label>
+                        <br />
+               <asp:Label ID="asErrorMessage" Text="" runat="server" ForeColor="Red"></asp:Label>
+             </div>
      </div>
-    </form>
+   </form>
 </body>
 </html>
 

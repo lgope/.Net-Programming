@@ -126,6 +126,7 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Pages\AdminHomePage.aspx" />
+    <Content Include="Pages\AdvisorHomePage.aspx" />
     <Content Include="Pages\CRUDImages\addnew.png" />
     <Content Include="Pages\CRUDImages\cancel.png" />
     <Content Include="Pages\CRUDImages\delete.png" />
@@ -198,6 +199,13 @@
     </Compile>
     <Compile Include="Pages\AdminHomePage.aspx.designer.cs">
       <DependentUpon>AdminHomePage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\AdvisorHomePage.aspx.cs">
+      <DependentUpon>AdvisorHomePage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\AdvisorHomePage.aspx.designer.cs">
+      <DependentUpon>AdvisorHomePage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\DataConnection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
