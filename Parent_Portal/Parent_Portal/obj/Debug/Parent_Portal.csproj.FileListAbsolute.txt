@@ -64,7 +64,6 @@ I:\GitHub\.Net-Programming\Parent_Portal\Parent_Portal\bin\Newtonsoft.Json.xml
 I:\GitHub\.Net-Programming\Parent_Portal\Parent_Portal\bin\Antlr3.Runtime.pdb
 I:\GitHub\.Net-Programming\Parent_Portal\Parent_Portal\bin\Microsoft.AspNet.FriendlyUrls.xml
 I:\GitHub\.Net-Programming\Parent_Portal\Parent_Portal\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-I:\GitHub\.Net-Programming\Parent_Portal\Parent_Portal\obj\Debug\Parent_Portal.csprojAssemblyReference.cache
 I:\GitHub\.Net-Programming\Parent_Portal\Parent_Portal\obj\Debug\Parent_Portal.csproj.CopyComplete
 I:\GitHub\.Net-Programming\Parent_Portal\Parent_Portal\obj\Debug\Parent_Portal.dll
 I:\GitHub\.Net-Programming\Parent_Portal\Parent_Portal\obj\Debug\Parent_Portal.pdb
