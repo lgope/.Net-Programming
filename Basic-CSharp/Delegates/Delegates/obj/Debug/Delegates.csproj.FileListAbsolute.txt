@@ -1,0 +1,6 @@
+F:\.Net-Programming\Basic C#\Delegates\Delegates\bin\Debug\Delegates.exe.config
+F:\.Net-Programming\Basic C#\Delegates\Delegates\bin\Debug\Delegates.exe
+F:\.Net-Programming\Basic C#\Delegates\Delegates\bin\Debug\Delegates.pdb
+F:\.Net-Programming\Basic C#\Delegates\Delegates\obj\Debug\Delegates.csprojAssemblyReference.cache
+F:\.Net-Programming\Basic C#\Delegates\Delegates\obj\Debug\Delegates.exe
+F:\.Net-Programming\Basic C#\Delegates\Delegates\obj\Debug\Delegates.pdb
