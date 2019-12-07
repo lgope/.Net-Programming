@@ -1,0 +1,5 @@
+F:\.Net-Programming\Basic C#\OutputCheck2\OutputCheck2\bin\Debug\OutputCheck2.exe.config
+F:\.Net-Programming\Basic C#\OutputCheck2\OutputCheck2\bin\Debug\OutputCheck2.exe
+F:\.Net-Programming\Basic C#\OutputCheck2\OutputCheck2\bin\Debug\OutputCheck2.pdb
+F:\.Net-Programming\Basic C#\OutputCheck2\OutputCheck2\obj\Debug\OutputCheck2.exe
+F:\.Net-Programming\Basic C#\OutputCheck2\OutputCheck2\obj\Debug\OutputCheck2.pdb
