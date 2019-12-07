@@ -26,9 +26,9 @@ namespace Parent_Portal.Pages
         {
             string studentListQuery = @"SELECT [S_Id], [S_Name], [S_Sem_No] FROM [dbo].[ParentTable] where S_Id in (SELECT [S_Id] FROM [dbo].AdvisorStudent)";
 
-            string crQuery = @"SELECT [S_Id],[S_Name],[C_Code],[C_Title],[Credit],[Section],[Teacher]FROM [dbo].[CourseRegistration]";
+            string crQuery = @"SELECT [Cr_Id], [S_Id],[S_Name],[C_Code],[C_Title],[Credit],[Section],[Teacher]FROM [dbo].[CourseRegistration]";
 
-            string lrQuery = @"SELECT [S_Id],[S_Name],[C_Name],[Quize_Avg],[Attendance],[Assignment],[Midterm],[Final],[Total] FROM [dbo].[LiveResult]";
+            string lrQuery = @"SELECT [Id], [S_Id],[S_Name],[C_Name],[Quize_Avg],[Attendance],[Assignment],[Midterm],[Final],[Total] FROM [dbo].[LiveResult]";
 
 
             studentListGridView.DataSource = db.getData(studentListQuery);
@@ -100,7 +100,7 @@ namespace Parent_Portal.Pages
                                               ,[Credit] = @Credit
                                               ,[Section] = @Section
                                               ,[Teacher] = @Teacher
-                                         WHERE [Id]=@id";
+                                         WHERE [Cr_Id]=@id";
                     SqlCommand sqlCmd = new SqlCommand(query, sqlCon);
                     sqlCmd.Parameters.AddWithValue("@S_Id", (CourseRegistrationGridView.Rows[e.RowIndex].FindControl("S_IdTextBox2") as TextBox).Text.Trim());
                     sqlCmd.Parameters.AddWithValue("@S_Name", (CourseRegistrationGridView.Rows[e.RowIndex].FindControl("S_NameTextBox2") as TextBox).Text.Trim());
@@ -135,7 +135,7 @@ namespace Parent_Portal.Pages
                 using (SqlConnection sqlCon = new SqlConnection(connectionString))
                 {
                     sqlCon.Open();
-                    string query = "DELETE FROM [dbo].[CourseRegistration] WHERE [Id]=@id";
+                    string query = "DELETE FROM [dbo].[CourseRegistration] WHERE [Cr_Id]=@id";
                     SqlCommand sqlCmd = new SqlCommand(query, sqlCon);
 
                     sqlCmd.Parameters.AddWithValue("@id", Convert.ToString(CourseRegistrationGridView.DataKeys[e.RowIndex].Value));
@@ -173,17 +173,121 @@ namespace Parent_Portal.Pages
         // Live Result Grid View CRUD
         protected void LiveResultGridView_RowCommand(object sender, GridViewCommandEventArgs e)
         {
+            try
+            {
+                if (e.CommandName.Equals("AddNew"))
+                {
+                    using (SqlConnection sqlCon = new SqlConnection(connectionString))
+                    {
+                        sqlCon.Open();
+                        string query = @"INSERT INTO [dbo].[LiveResult]
+                                           ([S_Id]
+                                           ,[S_Name]
+                                           ,[C_Name]
+                                           ,[Quize_Avg]
+                                           ,[Attendance]
+                                           ,[Assignment]
+                                           ,[Midterm]
+                                           ,[Final]
+                                           ,[Total])
+                                     VALUES (@S_Id, @S_Name, @C_Name, @Quize_Avg, @Attendance, @Assignment, @Midterm, @Final, @Total)";
+                        SqlCommand sqlCmd = new SqlCommand(query, sqlCon);
+                        sqlCmd.Parameters.AddWithValue("@S_Id", (LiveResultGridView.FooterRow.FindControl("S_IdTextBox1Footer") as TextBox).Text.Trim());
+                        sqlCmd.Parameters.AddWithValue("@S_Name", (LiveResultGridView.FooterRow.FindControl("S_NameTextBox2Footer") as TextBox).Text.Trim());
+                        sqlCmd.Parameters.AddWithValue("@C_Name", (LiveResultGridView.FooterRow.FindControl("C_NameTextBox3Footer") as TextBox).Text.Trim());
+                        sqlCmd.Parameters.AddWithValue("@Quize_Avg", (LiveResultGridView.FooterRow.FindControl("Quize_AvgTextBox4Footer") as TextBox).Text.Trim());
+                        sqlCmd.Parameters.AddWithValue("@Attendance", (LiveResultGridView.FooterRow.FindControl("AttendanceTextBox5Footer") as TextBox).Text.Trim());
+                        sqlCmd.Parameters.AddWithValue("@Assignment", (LiveResultGridView.FooterRow.FindControl("AssignmentTextBox6Footer") as TextBox).Text.Trim());
+                        sqlCmd.Parameters.AddWithValue("@Midterm", (LiveResultGridView.FooterRow.FindControl("MidtermTextBox7Footer") as TextBox).Text.Trim());
+                        sqlCmd.Parameters.AddWithValue("@Final", (LiveResultGridView.FooterRow.FindControl("FinalTextBox8Footer") as TextBox).Text.Trim());
+                        sqlCmd.Parameters.AddWithValue("@Total", (LiveResultGridView.FooterRow.FindControl("TotalTextBox9Footer") as TextBox).Text.Trim());
+                        sqlCmd.ExecuteNonQuery();
+
+                        loadGrid();
+
+                        lrSuccessMessage.Text = "New Record Added";
+                        lrErrorMessage.Text = "";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                lrSuccessMessage.Text = "";
+                lrErrorMessage.Text = ex.Message;
+            }
 
         }
 
         protected void LiveResultGridView_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
+            try
+            {
+                using (SqlConnection sqlCon = new SqlConnection(connectionString))
+                {
+                    sqlCon.Open();
+                    string query = @"UPDATE [dbo].[LiveResult]
+                                           SET [S_Id] = @S_Id
+                                              ,[S_Name] = @S_Name
+                                              ,[C_Name] = @C_Name
+                                              ,[Quize_Avg] = @Quize_Avg
+                                              ,[Attendance] = @Attendance
+                                              ,[Assignment] = @Assignment
+                                              ,[Midterm] = @Midterm
+                                              ,[Final] = @Final
+                                              ,[Total] = @Total
+                                         WHERE [Id]=@id";
+                    SqlCommand sqlCmd = new SqlCommand(query, sqlCon);
+                    sqlCmd.Parameters.AddWithValue("@S_Id", (LiveResultGridView.Rows[e.RowIndex].FindControl("S_IdTextBox") as TextBox).Text.Trim());
+                    sqlCmd.Parameters.AddWithValue("@S_Name", (LiveResultGridView.Rows[e.RowIndex].FindControl("S_NameTextBox2") as TextBox).Text.Trim());
+                    sqlCmd.Parameters.AddWithValue("@C_Name", (LiveResultGridView.Rows[e.RowIndex].FindControl("C_NameTextBox3") as TextBox).Text.Trim());
+                    sqlCmd.Parameters.AddWithValue("@Quize_Avg", (LiveResultGridView.Rows[e.RowIndex].FindControl("Quize_AvgTextBox4") as TextBox).Text.Trim());
+                    sqlCmd.Parameters.AddWithValue("@Attendance", (LiveResultGridView.Rows[e.RowIndex].FindControl("AttendanceTextBox5") as TextBox).Text.Trim());
+                    sqlCmd.Parameters.AddWithValue("@Assignment", (LiveResultGridView.Rows[e.RowIndex].FindControl("AssignmentTextBox6") as TextBox).Text.Trim());
+                    sqlCmd.Parameters.AddWithValue("@Midterm", (LiveResultGridView.Rows[e.RowIndex].FindControl("MidtermTextBox7") as TextBox).Text.Trim());
+                    sqlCmd.Parameters.AddWithValue("@Final", (LiveResultGridView.Rows[e.RowIndex].FindControl("FinalTextBox8") as TextBox).Text.Trim());
+                    sqlCmd.Parameters.AddWithValue("@Total", (LiveResultGridView.Rows[e.RowIndex].FindControl("TotalTextBox9") as TextBox).Text.Trim());
+                    sqlCmd.Parameters.AddWithValue("@id", Convert.ToString(LiveResultGridView.DataKeys[e.RowIndex].Value));
 
+                    sqlCmd.ExecuteNonQuery();
+
+                    LiveResultGridView.EditIndex = -1;
+                    loadGrid();
+
+                    lrSuccessMessage.Text = "Selected Record Updated";
+                    lrErrorMessage.Text = "";
+                }
+            }
+            catch (Exception ex)
+            {
+                lrSuccessMessage.Text = "";
+                lrErrorMessage.Text = ex.Message;
+            }
         }
 
         protected void LiveResultGridView_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
+            try
+            {
+                using (SqlConnection sqlCon = new SqlConnection(connectionString))
+                {
+                    sqlCon.Open();
+                    string query = "DELETE FROM [dbo].[LiveResult] WHERE [Id]=@id";
+                    SqlCommand sqlCmd = new SqlCommand(query, sqlCon);
 
+                    sqlCmd.Parameters.AddWithValue("@id", Convert.ToString(LiveResultGridView.DataKeys[e.RowIndex].Value));
+                    sqlCmd.ExecuteNonQuery();
+
+                    loadGrid();
+
+                    lrSuccessMessage.Text = "Selected Record Deleted";
+                    lrErrorMessage.Text = "";
+                }
+            }
+            catch (Exception ex)
+            {
+                lrSuccessMessage.Text = "";
+                lrErrorMessage.Text = ex.Message;
+            }
         }
 
         protected void LiveResultGridView_RowEditing(object sender, GridViewEditEventArgs e)

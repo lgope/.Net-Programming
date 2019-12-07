@@ -54,8 +54,17 @@
                 <asp:GridView ID="CourseRegistrationGridView" runat="server" AutoGenerateColumns="False" OnRowCommand="CourseRegistrationGridView_RowCommand"
                     OnRowUpdating="CourseRegistrationGridView_RowUpdating" OnRowDeleting="CourseRegistrationGridView_RowDeleting"
                      OnRowEditing="CourseRegistrationGridView_RowEditing" OnRowCancelingEdit="CourseRegistrationGridView_RowCancelingEdit"
-                      DataKeyNames="Id" ShowHeaderWhenEmpty="true">
+                      DataKeyNames="Cr_Id" ShowHeaderWhenEmpty="true" ShowFooter ="true">
                     <Columns>
+                        <asp:TemplateField HeaderText="Course Registers Id">
+                            
+                            <ItemTemplate>
+                                <asp:Label ID="Cr_IdLabel1" runat="server" Text='<%# Eval("Cr_Id") %>'></asp:Label>
+                            </ItemTemplate>
+
+                            
+                        </asp:TemplateField>
+
                         <asp:TemplateField HeaderText="Student Id">
                             <EditItemTemplate>
                                 <asp:TextBox ID="S_IdTextBox2" runat="server" Text='<%# Eval("S_Id") %>'></asp:TextBox>
@@ -67,7 +76,6 @@
                             <FooterTemplate>
                                 <asp:TextBox ID="S_IdTextBox2Footer" runat="server" />
                             </FooterTemplate>
-
                         </asp:TemplateField>
 
                         <asp:TemplateField HeaderText="Student Name">
@@ -179,11 +187,21 @@
             <div class="LiveResult">
                 <asp:Label ID="Label8" runat="server" Text="Import Results"></asp:Label>
 
-                <asp:GridView ID="LiveResultGridView" runat="server" AutoGenerateColumns="False" DataKeyNames="" OnRowCommand="LiveResultGridView_RowCommand"
+                <asp:GridView ID="LiveResultGridView" runat="server" AutoGenerateColumns="False" DataKeyNames="Id" OnRowCommand="LiveResultGridView_RowCommand"
                     OnRowUpdating="LiveResultGridView_RowUpdating" OnRowDeleting="LiveResultGridView_RowDeleting"
                      OnRowEditing="LiveResultGridView_RowEditing" OnRowCancelingEdit="LiveResultGridView_RowCancelingEdit"
                      ShowFooter="true"  >
                     <Columns>
+
+                        <asp:TemplateField HeaderText="LR Id">
+                            
+                            <ItemTemplate>
+                                <asp:Label ID="LR_Id_Label1" runat="server" Text='<%# Eval("Id") %>'></asp:Label>
+                            </ItemTemplate>
+
+                            
+                        </asp:TemplateField>
+
                         <asp:TemplateField HeaderText="Student Id">
                             <EditItemTemplate>
                                 <asp:TextBox ID="S_IdTextBox" runat="server" Text='<%# Eval("S_Id") %>'></asp:TextBox>

@@ -132,6 +132,7 @@
     <Content Include="Pages\CRUDImages\delete.png" />
     <Content Include="Pages\CRUDImages\edit.png" />
     <Content Include="Pages\CRUDImages\save.png" />
+    <Content Include="Pages\ParentHomePage.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -208,6 +209,13 @@
       <DependentUpon>AdvisorHomePage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\DataConnection.cs" />
+    <Compile Include="Pages\ParentHomePage.aspx.cs">
+      <DependentUpon>ParentHomePage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\ParentHomePage.aspx.designer.cs">
+      <DependentUpon>ParentHomePage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>

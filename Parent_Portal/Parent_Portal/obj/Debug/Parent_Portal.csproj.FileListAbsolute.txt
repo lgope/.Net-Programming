@@ -67,3 +67,4 @@ I:\GitHub\.Net-Programming\Parent_Portal\Parent_Portal\bin\Microsoft.CodeDom.Pro
 I:\GitHub\.Net-Programming\Parent_Portal\Parent_Portal\obj\Debug\Parent_Portal.csproj.CopyComplete
 I:\GitHub\.Net-Programming\Parent_Portal\Parent_Portal\obj\Debug\Parent_Portal.dll
 I:\GitHub\.Net-Programming\Parent_Portal\Parent_Portal\obj\Debug\Parent_Portal.pdb
+I:\GitHub\.Net-Programming\Parent_Portal\Parent_Portal\obj\Debug\Parent_Portal.csprojAssemblyReference.cache
