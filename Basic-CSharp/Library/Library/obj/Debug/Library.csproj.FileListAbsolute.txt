@@ -1,0 +1,12 @@
+F:\.Net-Programming\Basic C#\Library\Library\bin\Debug\Library.exe.config
+F:\.Net-Programming\Basic C#\Library\Library\bin\Debug\Library.exe
+F:\.Net-Programming\Basic C#\Library\Library\bin\Debug\Library.pdb
+F:\.Net-Programming\Basic C#\Library\Library\obj\Debug\Library.csprojAssemblyReference.cache
+F:\.Net-Programming\Basic C#\Library\Library\obj\Debug\Library.exe
+F:\.Net-Programming\Basic C#\Library\Library\obj\Debug\Library.pdb
+I:\My GitHub\.Net-Programming-master\Basic C#\Library\Library\bin\Debug\Library.exe.config
+I:\My GitHub\.Net-Programming-master\Basic C#\Library\Library\bin\Debug\Library.exe
+I:\My GitHub\.Net-Programming-master\Basic C#\Library\Library\bin\Debug\Library.pdb
+I:\My GitHub\.Net-Programming-master\Basic C#\Library\Library\obj\Debug\Library.csprojAssemblyReference.cache
+I:\My GitHub\.Net-Programming-master\Basic C#\Library\Library\obj\Debug\Library.exe
+I:\My GitHub\.Net-Programming-master\Basic C#\Library\Library\obj\Debug\Library.pdb
