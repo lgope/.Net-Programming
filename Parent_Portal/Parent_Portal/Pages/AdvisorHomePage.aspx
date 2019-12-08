@@ -225,9 +225,11 @@
                         </asp:TemplateField>
 
                         <asp:TemplateField HeaderText="Student Id">
-                            <EditItemTemplate>
+                        <%--     <EditItemTemplate>
                                 <asp:TextBox ID="S_IdTextBox" runat="server" Text='<%# Eval("S_Id") %>'></asp:TextBox>
-                            </EditItemTemplate>
+                            </EditItemTemplate> --%>
+
+                            
                             <ItemTemplate>
                                 <asp:Label ID="Label1" runat="server" Text='<%# Eval("S_Id") %>'></asp:Label>
                             </ItemTemplate>

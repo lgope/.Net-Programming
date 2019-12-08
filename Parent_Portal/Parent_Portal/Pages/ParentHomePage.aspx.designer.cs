@@ -24,13 +24,31 @@ namespace Parent_Portal.Pages
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// crLabel1 control.
+        /// RegisterCourseListTextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label crLabel1;
+        protected global::System.Web.UI.WebControls.TextBox RegisterCourseListTextBox;
+
+        /// <summary>
+        /// RegisterCourseListButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button RegisterCourseListButton;
+
+        /// <summary>
+        /// crLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label crLabel;
 
         /// <summary>
         /// RegisterCourseListGridView1 control.
@@ -42,13 +60,13 @@ namespace Parent_Portal.Pages
         protected global::System.Web.UI.WebControls.GridView RegisterCourseListGridView1;
 
         /// <summary>
-        /// Label8 control.
+        /// LiveResultLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label8;
+        protected global::System.Web.UI.WebControls.Label LiveResultLabel;
 
         /// <summary>
         /// LiveResultGridView1 control.

@@ -10,8 +10,16 @@
     <form id="form1" runat="server">
         <div class="mainDiv">
 
+            <%-- Registered Course List --%>
             <div class="RegisterCourseList">
-                <asp:Label ID="crLabel1" runat="server" Text="Register Course List"></asp:Label>
+
+                
+                <br />
+                <asp:TextBox ID="RegisterCourseListTextBox" placeholder="Student Id" runat="server"></asp:TextBox><asp:Button ID="RegisterCourseListButton" runat="server" Text="Click" OnClick="RegisterCourseListButton_Click"/>
+                <br />
+                <br />
+
+                <asp:Label ID="crLabel" runat="server" Visible="false" Text="Register Course List"></asp:Label>
                 <asp:GridView ID="RegisterCourseListGridView1" runat="server" ShowHeaderWhenEmpty="true" AutoGenerateColumns="false">
                     <Columns>
                         <asp:TemplateField HeaderText="Student Id">
@@ -66,9 +74,11 @@
                 </asp:GridView>
             </div>
 
+            <br />
+            <br />
             <div class="LiveResult">
 
-                <asp:Label ID="Label8" runat="server" Text="Live Results"></asp:Label>
+                <asp:Label ID="LiveResultLabel" runat="server" Visible="false" Text="Live Results"></asp:Label>
 
                 <asp:GridView ID="LiveResultGridView1" runat="server" AutoGenerateColumns="False" ShowHeaderWhenEmpty="true">
                     <Columns>

@@ -22,8 +22,6 @@ namespace Parent_Portal.Pages
 
         }
 
-        
-
         protected void IdButton1_Click(object sender, EventArgs e)
         {
             advisorId = idTextBox.Text;
