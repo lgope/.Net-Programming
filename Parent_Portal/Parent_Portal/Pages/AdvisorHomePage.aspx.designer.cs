@@ -24,13 +24,31 @@ namespace Parent_Portal.Pages
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// Label1 control.
+        /// idTextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
+        protected global::System.Web.UI.WebControls.TextBox idTextBox;
+
+        /// <summary>
+        /// IdButton1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button IdButton1;
+
+        /// <summary>
+        /// StudentListLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label StudentListLabel;
 
         /// <summary>
         /// studentListGridView control.
@@ -49,6 +67,24 @@ namespace Parent_Portal.Pages
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label CourseRegistersLabel;
+
+        /// <summary>
+        /// CourseRegistersTextBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox CourseRegistersTextBox;
+
+        /// <summary>
+        /// CourseRegistersButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button CourseRegistersButton;
 
         /// <summary>
         /// CourseRegistrationGridView control.
@@ -78,13 +114,31 @@ namespace Parent_Portal.Pages
         protected global::System.Web.UI.WebControls.Label crErrorMessage;
 
         /// <summary>
-        /// Label8 control.
+        /// ImportResultsLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label8;
+        protected global::System.Web.UI.WebControls.Label ImportResultsLabel;
+
+        /// <summary>
+        /// ImportResultsTextBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox ImportResultsTextBox;
+
+        /// <summary>
+        /// ImportResultsButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ImportResultsButton;
 
         /// <summary>
         /// LiveResultGridView control.

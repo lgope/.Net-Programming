@@ -8,11 +8,18 @@
 </head>
 <body>
     <form id="form1" runat="server">
+        <br />
+        <div class="takeId">
+            <asp:TextBox ID="idTextBox" placeholder="Your Id" runat="server"></asp:TextBox><asp:Button ID="IdButton1" runat="server" Text="Click" OnClick="IdButton1_Click" />
+        </div>
+        <br />
         <div class="main">
 
             <div class ="studentList">
-                <asp:Label ID="Label1" runat="server" Text="Your students List"></asp:Label>
+                <asp:Label ID="StudentListLabel" runat="server" Visible="false">Your students List</asp:Label>
+                <br />
                 <asp:GridView ID="studentListGridView" runat="server" AutoGenerateColumns="False">
+                    
                     <Columns>
 
                         <asp:TemplateField HeaderText="Students Id">
@@ -48,9 +55,15 @@
             <br />
             <br />
 
-            <div class="CourseRegisters">
-                <asp:Label ID="CourseRegistersLabel" runat="server" Text="Course Registration:"></asp:Label>
 
+            <%--- Course Register Grid View ---%>
+            <div class="CourseRegisters">
+                    <asp:Label ID="CourseRegistersLabel" runat="server" Visible="false">Course Registration:</asp:Label>
+                <br />
+                <asp:TextBox ID="CourseRegistersTextBox" placeholder="Student Id" runat="server" Visible="false"></asp:TextBox><asp:Button ID="CourseRegistersButton" runat="server" Visible="false" Text="Click" OnClick="CourseRegistersButton_Click" />
+                <br />
+                <br />
+                
                 <asp:GridView ID="CourseRegistrationGridView" runat="server" AutoGenerateColumns="False" OnRowCommand="CourseRegistrationGridView_RowCommand"
                     OnRowUpdating="CourseRegistrationGridView_RowUpdating" OnRowDeleting="CourseRegistrationGridView_RowDeleting"
                      OnRowEditing="CourseRegistrationGridView_RowEditing" OnRowCancelingEdit="CourseRegistrationGridView_RowCancelingEdit"
@@ -183,11 +196,20 @@
 
             <br />
             <br />
+            <br />
+            <br />
 
-            <div class="LiveResult">
-                <asp:Label ID="Label8" runat="server" Text="Import Results"></asp:Label>
 
-                <asp:GridView ID="LiveResultGridView" runat="server" AutoGenerateColumns="False" DataKeyNames="Id" OnRowCommand="LiveResultGridView_RowCommand"
+            <%--- Live Result Grid View ---%>
+
+            <div class="LiveResult col col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                <asp:Label ID="ImportResultsLabel" runat="server" Visible="false">Import Results</asp:Label>
+                <br />
+                <asp:TextBox ID="ImportResultsTextBox" placeholder="Student Id" runat="server" Visible="false"></asp:TextBox><asp:Button ID="ImportResultsButton" runat="server" Visible="false" Text="Click" OnClick="ImportResultsButton1_Click" />
+                <br />
+                <br />
+
+                <asp:GridView ID="LiveResultGridView"  runat="server" AutoGenerateColumns="False" DataKeyNames="Id" OnRowCommand="LiveResultGridView_RowCommand"
                     OnRowUpdating="LiveResultGridView_RowUpdating" OnRowDeleting="LiveResultGridView_RowDeleting"
                      OnRowEditing="LiveResultGridView_RowEditing" OnRowCancelingEdit="LiveResultGridView_RowCancelingEdit"
                      ShowFooter="true"  >

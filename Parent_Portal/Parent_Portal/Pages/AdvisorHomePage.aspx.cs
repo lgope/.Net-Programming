@@ -13,32 +13,46 @@ namespace Parent_Portal.Pages
     {
         string connectionString = @"Data Source=DESKTOP-LF18UAR\LAKSHMANSQL;Initial Catalog=Parent_Portal;Integrated Security=True";
         DataConnection db = new DataConnection();
+
+        string advisorId = "";
+        string studentId = "";
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
-            {
-                loadGrid();
-            }
 
         }
 
-        public void loadGrid()
+        
+
+        protected void IdButton1_Click(object sender, EventArgs e)
         {
-            string studentListQuery = @"SELECT [S_Id], [S_Name], [S_Sem_No] FROM [dbo].[ParentTable] where S_Id in (SELECT [S_Id] FROM [dbo].AdvisorStudent)";
+            advisorId = idTextBox.Text;
 
-            string crQuery = @"SELECT [Cr_Id], [S_Id],[S_Name],[C_Code],[C_Title],[Credit],[Section],[Teacher]FROM [dbo].[CourseRegistration]";
+            StudentListLabel.Visible = true;
+            CourseRegistersLabel.Visible = true;
+            ImportResultsLabel.Visible = true;
 
-            string lrQuery = @"SELECT [Id], [S_Id],[S_Name],[C_Name],[Quize_Avg],[Attendance],[Assignment],[Midterm],[Final],[Total] FROM [dbo].[LiveResult]";
+            CourseRegistersTextBox.Visible = true;
+            CourseRegistersButton.Visible = true;
 
+            ImportResultsTextBox.Visible = true;
+            ImportResultsButton.Visible = true;
 
-            studentListGridView.DataSource = db.getData(studentListQuery);
-            studentListGridView.DataBind();
+            loadStudentListGrid(advisorId);
+        }
+        protected void CourseRegistersButton_Click(object sender, EventArgs e)
+        {
+            advisorId = idTextBox.Text;
+            studentId = CourseRegistersTextBox.Text;
 
-            CourseRegistrationGridView.DataSource = db.getData(crQuery);
-            CourseRegistrationGridView.DataBind();
+            loadCourseRegistrationGrid(advisorId, studentId);
+        }
 
-            LiveResultGridView.DataSource = db.getData(lrQuery);
-            LiveResultGridView.DataBind();
+        protected void ImportResultsButton1_Click(object sender, EventArgs e)
+        {
+            advisorId = idTextBox.Text;
+            studentId = ImportResultsTextBox.Text;
+            loadLiveResultGrid(advisorId, studentId);
         }
 
         // Course Registration Grid View CRUD
@@ -70,7 +84,10 @@ namespace Parent_Portal.Pages
                         sqlCmd.Parameters.AddWithValue("@Teacher", (CourseRegistrationGridView.FooterRow.FindControl("TeacherTextBox7Footer") as TextBox).Text.Trim());
                         sqlCmd.ExecuteNonQuery();
 
-                        loadGrid();
+                        advisorId = idTextBox.Text;
+                        studentId = ImportResultsTextBox.Text;
+
+                        loadCourseRegistrationGrid(advisorId, studentId);
 
                         crSuccessMessage.Text = "New Record Added";
                         crErrorMessage.Text = "";
@@ -114,7 +131,11 @@ namespace Parent_Portal.Pages
                     sqlCmd.ExecuteNonQuery();
 
                     CourseRegistrationGridView.EditIndex = -1;
-                    loadGrid();
+
+                    advisorId = idTextBox.Text;
+                    studentId = ImportResultsTextBox.Text;
+
+                    loadCourseRegistrationGrid(advisorId, studentId);
 
                     crSuccessMessage.Text = "Selected Record Updated";
                     crErrorMessage.Text = "";
@@ -141,7 +162,10 @@ namespace Parent_Portal.Pages
                     sqlCmd.Parameters.AddWithValue("@id", Convert.ToString(CourseRegistrationGridView.DataKeys[e.RowIndex].Value));
                     sqlCmd.ExecuteNonQuery();
 
-                    loadGrid();
+                    advisorId = idTextBox.Text;
+                    studentId = ImportResultsTextBox.Text;
+
+                    loadCourseRegistrationGrid(advisorId, studentId);
 
                     crSuccessMessage.Text = "Selected Record Deleted";
                     crErrorMessage.Text = "";
@@ -158,14 +182,22 @@ namespace Parent_Portal.Pages
         protected void CourseRegistrationGridView_RowEditing(object sender, GridViewEditEventArgs e)
         {
             CourseRegistrationGridView.EditIndex = e.NewEditIndex;
-            loadGrid();
+
+            advisorId = idTextBox.Text;
+            studentId = ImportResultsTextBox.Text;
+
+            loadCourseRegistrationGrid(advisorId, studentId);
 
         }
 
         protected void CourseRegistrationGridView_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
         {
             CourseRegistrationGridView.EditIndex = -1;
-            loadGrid();
+
+            advisorId = idTextBox.Text;
+            studentId = ImportResultsTextBox.Text;
+
+            loadCourseRegistrationGrid(advisorId, studentId);
         }
 
 
@@ -203,7 +235,9 @@ namespace Parent_Portal.Pages
                         sqlCmd.Parameters.AddWithValue("@Total", (LiveResultGridView.FooterRow.FindControl("TotalTextBox9Footer") as TextBox).Text.Trim());
                         sqlCmd.ExecuteNonQuery();
 
-                        loadGrid();
+                        advisorId = idTextBox.Text;
+                        studentId = ImportResultsTextBox.Text;
+                        loadLiveResultGrid(advisorId, studentId);
 
                         lrSuccessMessage.Text = "New Record Added";
                         lrErrorMessage.Text = "";
@@ -251,7 +285,10 @@ namespace Parent_Portal.Pages
                     sqlCmd.ExecuteNonQuery();
 
                     LiveResultGridView.EditIndex = -1;
-                    loadGrid();
+
+                    advisorId = idTextBox.Text;
+                    studentId = ImportResultsTextBox.Text;
+                    loadLiveResultGrid(advisorId, studentId);
 
                     lrSuccessMessage.Text = "Selected Record Updated";
                     lrErrorMessage.Text = "";
@@ -277,7 +314,9 @@ namespace Parent_Portal.Pages
                     sqlCmd.Parameters.AddWithValue("@id", Convert.ToString(LiveResultGridView.DataKeys[e.RowIndex].Value));
                     sqlCmd.ExecuteNonQuery();
 
-                    loadGrid();
+                    advisorId = idTextBox.Text;
+                    studentId = ImportResultsTextBox.Text;
+                    loadLiveResultGrid(advisorId, studentId);
 
                     lrSuccessMessage.Text = "Selected Record Deleted";
                     lrErrorMessage.Text = "";
@@ -293,13 +332,47 @@ namespace Parent_Portal.Pages
         protected void LiveResultGridView_RowEditing(object sender, GridViewEditEventArgs e)
         {
             LiveResultGridView.EditIndex = e.NewEditIndex;
-            loadGrid();
+
+            advisorId = idTextBox.Text;
+            studentId = ImportResultsTextBox.Text;
+            loadLiveResultGrid(advisorId, studentId);
         }
 
         protected void LiveResultGridView_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
         {
             LiveResultGridView.EditIndex = -1;
-            loadGrid();
+
+            advisorId = idTextBox.Text;
+            studentId = ImportResultsTextBox.Text;
+            loadLiveResultGrid(advisorId, studentId);
         }
+
+        public void loadStudentListGrid(string advisorId)
+        {
+            string studentListQuery = @"SELECT [S_Id], [S_Name], [S_Sem_No] FROM [dbo].[ParentTable] where S_Id in (SELECT [S_Id] FROM [dbo].AdvisorStudent  where A_Id = '" + advisorId + "')";
+
+            studentListGridView.DataSource = db.getData(studentListQuery);
+            studentListGridView.DataBind();
+        }
+        
+        public void loadCourseRegistrationGrid(string advisorId, string studentId)
+        {
+            string crQuery = @"SELECT [Cr_Id], [S_Id],[S_Name],[C_Code],[C_Title],[Credit],[Section],[Teacher]FROM [dbo].[CourseRegistration] WHERE S_Id IN (SELECT [S_Id] = '" + studentId + "' FROM [dbo].AdvisorStudent where A_Id = '" + advisorId + "')";
+
+            CourseRegistrationGridView.DataSource = db.getData(crQuery);
+            CourseRegistrationGridView.DataBind();            
+        }
+
+        public void loadLiveResultGrid(string advisorId, string studentId)
+        {
+
+            string lrQuery = @"SELECT [Id], [S_Id],[S_Name],[C_Name],[Quize_Avg],[Attendance],[Assignment],[Midterm],[Final],[Total] FROM [dbo].[LiveResult] WHERE S_Id IN (SELECT [S_Id]  = '" + studentId + "' FROM [dbo].AdvisorStudent where A_Id = '" + advisorId + "')";
+
+
+            LiveResultGridView.DataSource = db.getData(lrQuery);
+            LiveResultGridView.DataBind();
+        }
+
+
     }
 }
