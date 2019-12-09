@@ -1,12 +1,12 @@
 # Parent Partal
-This application is basically for parents to see their children's institutional outcomes and activity.
+This web application is basically for parents to see their children's institutional outcomes and activity.
 
 # Motivation
 The idea of building Parent Portal was to provide a platform for Parent's who want to see their children's institutional outcomes 
 and activity. I found out there are not too many platforms in this segment to provide Parent's
 with a chance to get updated with their children's results and progress.
 
-#Key Features
+# Key Features
 Some of the standout features of the project are
 1. Parent's can register and login
 2. Can see their children's Registered courses and Live result's.
@@ -20,7 +20,7 @@ Some of the standout features of the project are
 
 
 ### To see result's
-![Uploading seeResult.gif…]()
+![seeResult](https://user-images.githubusercontent.com/58518192/70468989-580ee380-1af2-11ea-9bde-246d85061cd3.gif)
 
 ## Technology
 ## Front-end
@@ -36,8 +36,8 @@ Some of the standout features of the project are
 - SQL 2019
 
 ## Instalation
-`- Clone repo
+- Clone repo
 - Install VS <=2016
 - Open Project Folder
 - Click Web.config
-- Click Run Button`
+- Click Run Button
