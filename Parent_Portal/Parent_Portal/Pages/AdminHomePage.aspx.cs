@@ -62,11 +62,16 @@ namespace Parent_Portal.Pages
         {
             try
             {               
-                    Label lblID = (Label)ParentStudentGridView.Rows[e.RowIndex].FindControl("P_IdLabel");
+                    Label lblID = (Label)ParentStudentGridView.Rows[e.RowIndex].FindControl("P_Idlbl");
                     string advisorStuQuery = @"DELETE FROM [dbo].[AdvisorStudent] WHERE P_Id=" + lblID.Text;
                     string studentQuery = @"DELETE FROM [dbo].[ParentTable] WHERE P_Id=" + lblID.Text;
 
-                    if (db.ExecuteQuery(advisorStuQuery) == 1 && db.ExecuteQuery(studentQuery) == 1)
+                    if (db.ExecuteQuery(advisorStuQuery) == 1 || db.ExecuteQuery(studentQuery) == 1)
+                    {
+                        loadGrid();
+                        ParentSuccessMessage.Text = "Sucess";
+                    }
+                    else if (db.ExecuteQuery(advisorStuQuery) == 1 && db.ExecuteQuery(studentQuery) == 1)
                     {
                         loadGrid();
                         ParentSuccessMessage.Text = "Sucess";
