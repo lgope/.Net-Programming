@@ -266,7 +266,7 @@
 
             <%--- Live Result Grid View ---%>
 
-            <div class="LiveResult col col-lg-8 col-md-8 col-sm-8 col-xs-8">
+            <div class="LiveResult col col-lg-6 col-md-6 col-sm-8 col-xs-6">
                 <asp:Label ID="ImportResultsLabel" runat="server" Visible="false">Import Results</asp:Label>
                 <br />
                 <asp:TextBox ID="ImportResultsTextBox" style="width:210px;height:38px;" placeholder="Student Id" runat="server" Visible="false"></asp:TextBox>

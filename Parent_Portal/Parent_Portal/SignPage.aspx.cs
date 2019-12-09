@@ -42,8 +42,6 @@ namespace Parent_Portal.SignInUp
                     StudentID.Text = "";
                     StudentName.Text = "";
                     StudentSemNo.Text = "";
-
-
                 }
             }
             catch (Exception ex)
@@ -54,26 +52,60 @@ namespace Parent_Portal.SignInUp
 
         protected void signin_Click(object sender, EventArgs e)
         {
-            DataTable dtbl = new DataTable();
-            using (SqlConnection sqlCon = new SqlConnection(connectionString))
+            // Admin Loing
+            if (user_email.Text == "Admin" && user_pass.Text == "1234")
             {
-                string UserQuery = @"SELECT [P_Email],[P_Password] FROM [dbo].[ParentTable]
-                                     where P_Email = '"+ user_email.Text+ "' and P_Password = '"+user_pass.Text+"'";
-                sqlCon.Open();
-                SqlDataAdapter sqlDa = new SqlDataAdapter(UserQuery, sqlCon);
+                Response.Redirect("./Pages/AdminHomePage.aspx");
+            }
 
-                sqlDa.Fill(dtbl);
-            }
-            if (dtbl.Rows.Count <= 0)
+            // Advisor Login
+            else if (Int32.TryParse(user_email.Text, out int numValue))
             {
-                Response.Write("<script language=javascript>alert('Email or Pass Incorrect!')</script>");
-                user_email.Text = "";
-                user_pass.Text = "";
+                DataTable dtbl = new DataTable();
+                using (SqlConnection sqlCon = new SqlConnection(connectionString))
+                {                                    
+                    string AdvisorQuery = @"SELECT [A_Id],[A_Pass] FROM [dbo].[Advisor] where A_Id = '" + user_email.Text + "' and A_Pass = '" + user_pass.Text + "'";
+                    sqlCon.Open();
+                    SqlDataAdapter sqlDa = new SqlDataAdapter(AdvisorQuery, sqlCon);
+
+                    sqlDa.Fill(dtbl);
+                }
+                if (dtbl.Rows.Count <= 0)
+                {
+                    Response.Write("<script language=javascript>alert('Email or Pass Incorrect!')</script>");
+
+                    user_email.Text = "";
+                    user_pass.Text = "";
+                }
+                else
+                {
+                    Response.Redirect("./Pages/AdvisorHomePage.aspx");
+                }
             }
+            // Parent Loing
             else
             {
-                Response.Write("<script language=javascript>alert('Welcome to my website!')</script>");
-                Response.Redirect("./Pages/HomePage.aspx");
+                DataTable dtbl = new DataTable();
+                using (SqlConnection sqlCon = new SqlConnection(connectionString))
+                {
+                    string UserQuery = @"SELECT [P_Email],[P_Password] FROM [dbo].[ParentTable]
+                                     where P_Email = '" + user_email.Text + "' and P_Password = '" + user_pass.Text + "'";
+                    sqlCon.Open();
+                    SqlDataAdapter sqlDa = new SqlDataAdapter(UserQuery, sqlCon);
+
+                    sqlDa.Fill(dtbl);
+                }
+                if (dtbl.Rows.Count <= 0)
+                {
+                    Response.Write("<script language=javascript>alert('Email or Pass Incorrect!')</script>");
+
+                    user_email.Text = "";
+                    user_pass.Text = "";
+                }
+                else
+                {
+                    Response.Redirect("./Pages/HomePage.aspx");
+                }
             }
         }
     }

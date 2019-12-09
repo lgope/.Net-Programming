@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Parent_Portal.Pages.AdminHomePage1">
+    <Position X="7" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>FBAAAIABEEAQAAqAAggABBAAIAADBCAAAAATAEoAAAA=</HashCode>
+      <FileName>Pages\AdminHomePage.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Parent_Portal.Pages.AdvisorHomePage">
+    <Position X="8.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>FgIABIAiECEQYEgAAJCAgIAAIQAQgABGABKgAEIgEAA=</HashCode>
+      <FileName>Pages\AdvisorHomePage.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Parent_Portal.Pages.HomePage">
+    <Position X="0.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>Pages\HomePage.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Parent_Portal.Pages.ParentHomePage">
+    <Position X="0.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAQEAIgIAABAAAAIAAAAAAAAAACBAIgAAA=</HashCode>
+      <FileName>Pages\ParentHomePage.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Parent_Portal.SignInUp.index">
+    <Position X="2.75" Y="3.75" Width="1.5" />
+    <InheritanceLine Type="System.Web.UI.Page" ManuallyRouted="true">
+      <Path>
+        <Point X="5.75" Y="2.25" />
+        <Point X="5.75" Y="2.29" />
+        <Point X="4.708" Y="2.29" Type="JumpStart" />
+        <Point X="4.542" Y="2.29" Type="JumpEnd" />
+        <Point X="4.123" Y="2.29" />
+        <Point X="4.123" Y="6.775" />
+        <Point X="4.25" Y="6.775" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAIBAAAAAAgAAgAAAAAAohAAgAACAABAABAAAICABA=</HashCode>
+      <FileName>SignPage.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="System.Web.UI.Page" Collapsed="true">
+    <Position X="5" Y="2.25" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

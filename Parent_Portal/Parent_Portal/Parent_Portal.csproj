@@ -172,6 +172,7 @@
     <Content Include="Pages\sass\_team.scss" />
     <Content Include="Pages\sass\_testimonial_part.scss" />
     <Content Include="Pages\sass\_variables.scss" />
+    <Content Include="ClassDiagram1.cd" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Pages\about.html" />
     <Content Include="Pages\AdminHomePage.aspx" />
