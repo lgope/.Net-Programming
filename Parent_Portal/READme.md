@@ -1,4 +1,4 @@
-# Parent Partal
+# Parent Portal
 This web application is basically for parents to see their children's institutional outcomes and activity.
 
 # Motivation
@@ -35,7 +35,7 @@ Some of the standout features of the project are
 - Visual Studio 2016
 - SQL 2019
 
-## Instalation
+## Installation
 - Clone repo
 - Install VS <=2016
 - Open Project Folder
